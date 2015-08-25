@@ -1,17 +1,14 @@
 var ace = require('brace')
 var eslint = require('./eslint/lib/eslint.js')
+var extend = require('xtend')
+var h = require('virtual-dom/h')
+var main = require('main-loop')
+var reactCfg = require('eslint-config-standard-react')
 var standardCfg = require('eslint-config-standard')
 var standardFormat = require('standard-format')
-var reactCfg = require('eslint-config-standard-react')
-var extend = require('xtend')
+
 require('brace/mode/javascript')
 require('brace/theme/monokai')
-
-var config = extend({}, standardCfg)
-// add react rules
-config.ecmaFeatures = extend(config.ecmaFeatures, reactCfg.ecmaFeatures)
-config.rules = extend(config.rules, reactCfg.rules)
-
 var editor = ace.edit('javascript-editor')
 editor.getSession().setMode('ace/mode/javascript')
 editor.setTheme('ace/theme/monokai')
@@ -21,9 +18,13 @@ editor.setValue([
   'console.log(foo);',
   ''
 ].join('\n'))
+editor.getSession().on('change', doStuff)
 
-var h = require('virtual-dom/h')
-var main = require('main-loop')
+var config = extend({}, standardCfg)
+// add react rules
+config.ecmaFeatures = extend(config.ecmaFeatures, reactCfg.ecmaFeatures)
+config.rules = extend(config.rules, reactCfg.rules)
+
 var loop = main({messages: []}, render, require('virtual-dom'))
 document.querySelector('#messages').appendChild(loop.target)
 
@@ -40,7 +41,7 @@ function formatCode () {
 }
 
 function renderMessages (state) {
-  if (!state.messages) return h('div')
+  if (state.messages.length < 1) return h('div', {className: 'success message'}, 'JavaScript Standard Style')
 
   var renderedMessages = state.messages.map(function (m) {
     var formattedMessage = m.line + ':' + m.column + ' - ' + m.message + ' (' + m.ruleId + ')'
@@ -48,8 +49,6 @@ function renderMessages (state) {
   })
   return renderedMessages
 }
-
-editor.getSession().on('change', doStuff)
 
 function doStuff () {
   var messages = eslint.verify(editor.getValue(), config)
