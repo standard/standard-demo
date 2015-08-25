@@ -1,26 +1,10 @@
 # standard-demo
 
-[![npm][npm-image]][npm-url]
-[![travis][travis-image]][travis-url]
+Online "Try it" editor for JavaScript Standard Style.
 
-[npm-image]: https://img.shields.io/npm/v/standard-demo.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/standard-demo
-[travis-image]: https://img.shields.io/travis/flet/standard-demo.svg?style=flat-square
-[travis-url]: https://travis-ci.org/flet/standard-demo
+:warning: Warning: Work in Progress!
 
-web demo of standard
-
-## Install
-
-```
-npm install standard-demo
-```
-
-## Usage
-
-```js
-var standardDemo = require('standard-demo')
-```
+See it live at http://flet.github.io/standard-demo/
 
 ## Contributing
 
