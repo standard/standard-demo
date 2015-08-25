@@ -16,13 +16,11 @@ cloneOrPull('https://github.com/xjamundx/eslint-plugin-standard', 'eslint-plugin
 // remove load-rules.js
 sh.rm('eslint/lib/load-rules.js')
 
+// copy standard-plugin rules into the eslint rules
 sh.cp('-f', 'eslint-plugin-standard/rules/*.js', 'eslint/lib/rules')
 
 // create a new load-rules.js!
 generateRulesIndex('eslint/lib/')
-
-// hard code 'espree' as the parser
-sh.sed('-i', 'parser = require(config.parser)', "parser = require('espree')", 'eslint/lib/eslint.js')
 
 function cloneOrPull (repo, dir) {
   if (sh.test('-d', dir)) {
@@ -49,6 +47,18 @@ function generateRulesIndex (basedir) {
     output += '    rules["' + basename + '"] = require("./rules/' + basename + '")\n'
   })
 
+  // add rules from eslint-plugin-standard
+  output += "var standardPlugin = require('eslint-plugin-standard')\n"
+  output += 'Object.keys(standardPlugin.rules).forEach(function (key) {\n'
+  output += "  rules['standard/' + key] = standardPlugin.rules[key]\n"
+  output += '})\n'
+
+  // add rules from eslint-plugin-react
+  output += "var reactPlugin = require('eslint-plugin-react')\n"
+  output += 'Object.keys(reactPlugin.rules).forEach(function (key) {\n'
+  output += "  rules['react/' + key] = reactPlugin.rules[key]\n"
+  output += '})\n'
+
   output += '\n    return rules\n};'
   output.to(basedir + 'load-rules.js')
 }
@@ -56,3 +66,4 @@ function generateRulesIndex (basedir) {
 function isJsFile (file) {
   return file.match(/\.js$/)
 }
+
