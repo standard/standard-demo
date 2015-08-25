@@ -20,22 +20,28 @@
     "url": "https://github.com/flet/standard-demo.git"
   },
   "scripts": {
-    "build": "./prep-eslint.js && browserify main.js | uglifyjs -cm > bundle.js",
+    "build": "./prep-eslint.js && browserify main.js -r espree -r esformatter-quotes -r esformatter-literal-notation -r esformatter-semicolon-first -r esformatter-spaced-lined-comment -r esformatter-jsx | uglifyjs -cm > bundle.js",
+    "prewatch": "./prep-eslint.js",
+    "prebuild": "./prep-eslint.js",
     "start": "ecstatic -p 8001 .",
     "test": "standard && tape test/*.js | tap-spec",
-    "watch": "./prep-eslint.js && watchify main.js -o bundle.js -dv"
+    "watch": "watchify main.js -r espree -r esformatter-quotes -r esformatter-literal-notation -r esformatter-semicolon-first -r esformatter-spaced-lined-comment -r esformatter-jsx -o bundle.js -dv"
   },
   "dependencies": {
     "brace": "^0.5.1",
+    "brfs": "^1.4.1",
     "browserify": "^11.0.1",
     "ecstatic": "^0.8.0",
     "eslint-config-standard": "^4.1.0",
-    "espree": "^2.2.4",
+    "eslint-plugin-standard": "^1.2.0",
+    "espree": "^1.12.3",
     "main-loop": "^3.1.0",
     "shelljs": "^0.5.3",
+    "standard-format": "^1.6.6",
     "uglifyjs": "^2.4.10",
     "virtual-dom": "^2.1.1",
-    "watchify": "^3.3.1"
+    "watchify": "^3.3.1",
+    "xtend": "^4.0.0"
   },
   "private": "true"
 }
