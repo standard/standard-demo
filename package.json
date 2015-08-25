@@ -1,0 +1,41 @@
+{
+  "name": "standard-demo",
+  "description": "web demo of standard",
+  "version": "1.0.0",
+  "author": "Dan Flettre <fletd01@yahoo.com>",
+  "bugs": {
+    "url": "https://github.com/flet/standard-demo/issues"
+  },
+  "devDependencies": {
+    "standard": "*",
+    "tap-spec": "^4.0.2",
+    "tape": "^4.0.0"
+  },
+  "homepage": "https://github.com/flet/standard-demo",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flet/standard-demo.git"
+  },
+  "scripts": {
+    "build": "./prep-eslint.js && browserify main.js | uglifyjs -cm > bundle.js",
+    "start": "ecstatic -p 8001 .",
+    "test": "standard && tape test/*.js | tap-spec",
+    "watch": "./prep-eslint.js && watchify main.js -o bundle.js -dv"
+  },
+  "dependencies": {
+    "brace": "^0.5.1",
+    "browserify": "^11.0.1",
+    "ecstatic": "^0.8.0",
+    "eslint-config-standard": "^4.1.0",
+    "espree": "^2.2.4",
+    "main-loop": "^3.1.0",
+    "shelljs": "^0.5.3",
+    "uglifyjs": "^2.4.10",
+    "virtual-dom": "^2.1.1",
+    "watchify": "^3.3.1"
+  },
+  "private": "true"
+}
