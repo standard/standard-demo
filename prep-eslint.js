@@ -26,6 +26,7 @@ function cloneOrPull (repo, dir) {
   if (sh.test('-d', dir)) {
     sh.pushd(dir)
     sh.exec('git pull')
+    sh.exec('npm install --production')
     sh.popd()
   } else {
     sh.exec('git clone ' + repo + ' ' + dir)
