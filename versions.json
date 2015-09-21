@@ -1,0 +1,131 @@
+{
+  "name": "standard-demo",
+  "version": "1.0.0",
+  "dependencies": {
+    "brace": {
+      "version": "0.5.1",
+      "from": "brace@>=0.5.1 <0.6.0",
+      "resolved": "https://registry.npmjs.org/brace/-/brace-0.5.1.tgz"
+    },
+    "brfs": {
+      "version": "1.4.1",
+      "from": "brfs@>=1.4.1 <2.0.0",
+      "resolved": "https://registry.npmjs.org/brfs/-/brfs-1.4.1.tgz"
+    },
+    "browserify": {
+      "version": "11.1.0",
+      "from": "browserify@>=11.0.1 <12.0.0",
+      "resolved": "https://registry.npmjs.org/browserify/-/browserify-11.1.0.tgz"
+    },
+    "ecstatic": {
+      "version": "0.8.0",
+      "from": "ecstatic@>=0.8.0 <0.9.0",
+      "resolved": "https://registry.npmjs.org/ecstatic/-/ecstatic-0.8.0.tgz"
+    },
+    "esformatter": {
+      "version": "0.7.3",
+      "from": "esformatter@>=0.7.3 <0.8.0",
+      "resolved": "https://registry.npmjs.org/esformatter/-/esformatter-0.7.3.tgz"
+    },
+    "esformatter-jsx": {
+      "version": "2.1.1",
+      "from": "esformatter-jsx@>=2.1.1 <3.0.0",
+      "resolved": "https://registry.npmjs.org/esformatter-jsx/-/esformatter-jsx-2.1.1.tgz"
+    },
+    "esformatter-literal-notation": {
+      "version": "1.0.1",
+      "from": "esformatter-literal-notation@>=1.0.1 <2.0.0",
+      "resolved": "https://registry.npmjs.org/esformatter-literal-notation/-/esformatter-literal-notation-1.0.1.tgz"
+    },
+    "esformatter-quotes": {
+      "version": "1.0.3",
+      "from": "esformatter-quotes@>=1.0.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/esformatter-quotes/-/esformatter-quotes-1.0.3.tgz"
+    },
+    "esformatter-semicolon-first": {
+      "version": "1.1.0",
+      "from": "esformatter-semicolon-first@>=1.1.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/esformatter-semicolon-first/-/esformatter-semicolon-first-1.1.0.tgz"
+    },
+    "esformatter-spaced-lined-comment": {
+      "version": "2.0.1",
+      "from": "esformatter-spaced-lined-comment@>=2.0.1 <3.0.0",
+      "resolved": "https://registry.npmjs.org/esformatter-spaced-lined-comment/-/esformatter-spaced-lined-comment-2.0.1.tgz"
+    },
+    "eslint-config-standard": {
+      "version": "4.4.0",
+      "from": "eslint-config-standard@>=4.1.0 <5.0.0",
+      "resolved": "https://registry.npmjs.org/eslint-config-standard/-/eslint-config-standard-4.4.0.tgz"
+    },
+    "eslint-config-standard-react": {
+      "version": "1.1.0",
+      "from": "eslint-config-standard-react@>=1.1.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/eslint-config-standard-react/-/eslint-config-standard-react-1.1.0.tgz"
+    },
+    "eslint-plugin-react": {
+      "version": "3.4.2",
+      "from": "eslint-plugin-react@>=3.4.2 <4.0.0",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-3.4.2.tgz"
+    },
+    "eslint-plugin-standard": {
+      "version": "1.3.1",
+      "from": "eslint-plugin-standard@>=1.2.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-standard/-/eslint-plugin-standard-1.3.1.tgz"
+    },
+    "espree": {
+      "version": "1.12.3",
+      "from": "espree@>=1.12.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/espree/-/espree-1.12.3.tgz"
+    },
+    "main-loop": {
+      "version": "3.2.0",
+      "from": "main-loop@>=3.1.0 <4.0.0",
+      "resolved": "https://registry.npmjs.org/main-loop/-/main-loop-3.2.0.tgz"
+    },
+    "shelljs": {
+      "version": "0.5.3",
+      "from": "shelljs@>=0.5.3 <0.6.0",
+      "resolved": "https://registry.npmjs.org/shelljs/-/shelljs-0.5.3.tgz"
+    },
+    "standard-format": {
+      "version": "1.6.7",
+      "from": "standard-format@>=1.6.6 <2.0.0",
+      "resolved": "https://registry.npmjs.org/standard-format/-/standard-format-1.6.7.tgz"
+    },
+    "uglifyjs": {
+      "version": "2.4.10",
+      "from": "uglifyjs@>=2.4.10 <3.0.0",
+      "resolved": "https://registry.npmjs.org/uglifyjs/-/uglifyjs-2.4.10.tgz"
+    },
+    "virtual-dom": {
+      "version": "2.1.1",
+      "from": "virtual-dom@>=2.1.1 <3.0.0",
+      "resolved": "https://registry.npmjs.org/virtual-dom/-/virtual-dom-2.1.1.tgz"
+    },
+    "watchify": {
+      "version": "3.4.0",
+      "from": "watchify@>=3.3.1 <4.0.0",
+      "resolved": "https://registry.npmjs.org/watchify/-/watchify-3.4.0.tgz"
+    },
+    "xtend": {
+      "version": "4.0.0",
+      "from": "xtend@>=4.0.0 <5.0.0",
+      "resolved": "https://registry.npmjs.org/xtend/-/xtend-4.0.0.tgz"
+    },
+    "standard": {
+      "version": "5.3.1",
+      "from": "standard@*",
+      "resolved": "https://registry.npmjs.org/standard/-/standard-5.3.1.tgz"
+    },
+    "tap-spec": {
+      "version": "4.1.0",
+      "from": "tap-spec@>=4.0.2 <5.0.0",
+      "resolved": "https://registry.npmjs.org/tap-spec/-/tap-spec-4.1.0.tgz"
+    },
+    "tape": {
+      "version": "4.2.0",
+      "from": "tape@>=4.0.0 <5.0.0",
+      "resolved": "https://registry.npmjs.org/tape/-/tape-4.2.0.tgz"
+    }
+  }
+}

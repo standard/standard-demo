@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+var fs = require('fs')
 var path = require('path')
 var sh = require('shelljs')
 
@@ -21,6 +22,11 @@ sh.cp('-f', 'eslint-plugin-standard/rules/*.js', 'eslint/lib/rules')
 
 // create a new load-rules.js!
 generateRulesIndex('eslint/lib/')
+
+// generate version info
+sh.exec('npm ls --depth 0 --json', {silent: true}, function (code, output) {
+  fs.writeFile('versions.json', output, {encoding: 'utf-8'})
+})
 
 function cloneOrPull (repo, dir) {
   if (sh.test('-d', dir)) {

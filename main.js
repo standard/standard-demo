@@ -6,6 +6,19 @@ var main = require('main-loop')
 var reactCfg = require('eslint-config-standard-react')
 var standardCfg = require('eslint-config-standard')
 var standardFormat = require('standard-format')
+var deps = require('./versions.json').dependencies
+var eslintPackageJson = require('./eslint/package.json')
+
+// capture just "standard" versions
+var stdDeps = Object.keys(deps).filter(function (d) {
+  return d !== 'standard' && d.indexOf('standard') > -1
+})
+.map(function (d) {
+  return d + '@' + deps[d].version
+})
+
+// also include eslint version
+stdDeps.push('eslint@' + eslintPackageJson.version)
 
 require('brace/mode/javascript')
 require('brace/theme/monokai')
@@ -29,7 +42,14 @@ var loop = main({messages: []}, render, require('virtual-dom'))
 document.querySelector('#messages').appendChild(loop.target)
 
 function render (state) {
-  return h('div', [renderFormatButton(), renderMessages(state)])
+  return h('div', [renderFormatButton(), renderMessages(state), renderVersionInfo()])
+}
+
+function renderVersionInfo () {
+  var renderedVersions = stdDeps.map(function (m) {
+    return h('div', {className: 'versioninfo'}, m)
+  })
+  return renderedVersions
 }
 
 function renderFormatButton () {
