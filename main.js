@@ -18,7 +18,7 @@ var stdDeps = Object.keys(deps).filter(function (d) {
 })
 
 // also include eslint version
-stdDeps.push('eslint@' + eslintPackageJson.version)
+stdDeps.unshift('eslint@' + eslintPackageJson.version)
 
 require('brace/mode/javascript')
 require('brace/theme/monokai')
@@ -41,15 +41,10 @@ config.rules = extend(config.rules, reactCfg.rules)
 var loop = main({messages: []}, render, require('virtual-dom'))
 document.querySelector('#messages').appendChild(loop.target)
 
-function render (state) {
-  return h('div', [renderFormatButton(), renderMessages(state), renderVersionInfo()])
-}
+document.querySelector('#versioninfo').innerText = stdDeps.join(' ')
 
-function renderVersionInfo () {
-  var renderedVersions = stdDeps.map(function (m) {
-    return h('div', {className: 'versioninfo'}, m)
-  })
-  return renderedVersions
+function render (state) {
+  return h('div', [renderFormatButton(), renderMessages(state)])
 }
 
 function renderFormatButton () {
