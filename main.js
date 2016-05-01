@@ -7,6 +7,7 @@ var standardizer = require('./standardizer')
 require('brace/mode/javascript')
 require('brace/theme/monokai')
 var editor = ace.edit('javascript-editor')
+editor.$blockScrolling = Infinity
 
 editor.getSession().setMode('ace/mode/javascript')
 editor.setTheme('ace/theme/monokai')

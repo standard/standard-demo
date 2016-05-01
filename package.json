@@ -7,9 +7,13 @@
     "url": "https://github.com/flet/standard-demo/issues"
   },
   "devDependencies": {
+    "browserify": "^13.0.0",
+    "ecstatic": "^1.4.0",
     "standard": "*",
     "tap-spec": "^4.0.2",
-    "tape": "^4.0.0"
+    "tape": "^4.5.1",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.7.0"
   },
   "homepage": "https://github.com/flet/standard-demo",
   "keywords": [],
@@ -27,17 +31,10 @@
     "watch": "watchify main.js -o bundle.js -dv"
   },
   "dependencies": {
-    "brace": "^0.5.1",
-    "brfs": "^1.4.1",
-    "browserify": "^11.0.1",
-    "ecstatic": "^0.8.0",
+    "brace": "^0.8.0",
     "main-loop": "^3.1.0",
-    "shelljs": "^0.5.3",
     "simple-get": "^2.0.0",
-    "uglifyjs": "^2.4.10",
-    "virtual-dom": "^2.1.1",
-    "watchify": "^3.3.1",
-    "xtend": "^4.0.0"
+    "virtual-dom": "^2.1.1"
   },
   "private": true
 }
