@@ -1,28 +1,13 @@
 var ace = require('brace')
-var eslint = require('./eslint/lib/eslint.js')
-var extend = require('xtend')
 var h = require('virtual-dom/h')
 var main = require('main-loop')
-var reactCfg = require('eslint-config-standard-react')
-var standardCfg = require('eslint-config-standard')
-var standardFormat = require('standard-format')
-var deps = require('./versions.json').dependencies
-var eslintPackageJson = require('./eslint/package.json')
 
-// capture just "standard" versions
-var stdDeps = Object.keys(deps).filter(function (d) {
-  return d !== 'standard' && d.indexOf('standard') > -1
-})
-.map(function (d) {
-  return d + '@' + deps[d].version
-})
-
-// also include eslint version
-stdDeps.unshift('eslint@' + eslintPackageJson.version)
+var standardizer = require('./standardizer')
 
 require('brace/mode/javascript')
 require('brace/theme/monokai')
 var editor = ace.edit('javascript-editor')
+
 editor.getSession().setMode('ace/mode/javascript')
 editor.setTheme('ace/theme/monokai')
 editor.session.setUseWorker(false)
@@ -33,15 +18,14 @@ editor.setValue([
 ].join('\n'))
 editor.getSession().on('change', doStuff)
 
-var config = extend({}, standardCfg)
-// add react rules
-config.ecmaFeatures = extend(config.ecmaFeatures, reactCfg.ecmaFeatures)
-config.rules = extend(config.rules, reactCfg.rules)
-
 var loop = main({messages: []}, render, require('virtual-dom'))
 document.querySelector('#messages').appendChild(loop.target)
 
-document.querySelector('#versioninfo').innerText = stdDeps.join(' ')
+// display versions
+standardizer.version(function (err, versions) {
+  if (err) throw err
+  document.querySelector('#versioninfo').innerText = versions
+})
 
 function render (state) {
   return h('div', [renderFormatButton(), renderMessages(state)])
@@ -52,7 +36,10 @@ function renderFormatButton () {
 }
 
 function formatCode () {
-  editor.setValue(standardFormat.transform(editor.getValue()))
+  standardizer.format(editor.getValue(), function (err, text) {
+    if (err) throw err
+    editor.setValue(text)
+  })
 }
 
 function renderMessages (state) {
@@ -66,22 +53,24 @@ function renderMessages (state) {
 }
 
 function doStuff () {
-  var messages = eslint.verify(editor.getValue(), config)
+  standardizer.lint(editor.getValue(), function (err, messages) {
+    if (err) throw err
 
-  var annotations = []
-  messages.forEach(function (message) {
-    annotations.push(
-      {
-        row: message.line - 1, // must be 0 based
-        column: message.column - 1,  // must be 0 based
-        text: message.message,  // text to show in tooltip
-        type: 'error'
-      }
-    )
+    var annotations = []
+    messages.forEach(function (message) {
+      annotations.push(
+        {
+          row: message.line - 1, // must be 0 based
+          column: message.column - 1,  // must be 0 based
+          text: message.message,  // text to show in tooltip
+          type: 'error'
+        }
+      )
+    })
+
+    editor.session.setAnnotations(annotations)
+    loop.update({messages: messages})
   })
-
-  editor.session.setAnnotations(annotations)
-  loop.update({messages: messages})
 }
 
 doStuff()

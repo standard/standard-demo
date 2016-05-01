@@ -21,36 +21,23 @@
   },
   "scripts": {
     "build": "npm run browserify",
-    "browserify": "browserify main.js -r espree -r esformatter-quotes -r esformatter-literal-notation -r esformatter-semicolon-first -r esformatter-spaced-lined-comment -r esformatter-jsx | uglifyjs -cm > bundle.js",
-    "prewatch": "./prep-eslint.js",
-    "prebuild": "./prep-eslint.js",
+    "browserify": "browserify main.js | uglifyjs -cm > bundle.js",
     "start": "ecstatic -p 8000 .",
     "test": "standard && tape test/*.js | tap-spec",
-    "watch": "watchify main.js -r espree -r esformatter-quotes -r esformatter-literal-notation -r esformatter-semicolon-first -r esformatter-spaced-lined-comment -r esformatter-jsx -o bundle.js -dv"
+    "watch": "watchify main.js -o bundle.js -dv"
   },
   "dependencies": {
     "brace": "^0.5.1",
     "brfs": "^1.4.1",
     "browserify": "^11.0.1",
     "ecstatic": "^0.8.0",
-    "esformatter": "^0.7.3",
-    "esformatter-jsx": "^2.1.1",
-    "esformatter-literal-notation": "^1.0.1",
-    "esformatter-quotes": "^1.0.3",
-    "esformatter-semicolon-first": "^1.1.0",
-    "esformatter-spaced-lined-comment": "^2.0.1",
-    "eslint-config-standard": "^4.1.0",
-    "eslint-config-standard-react": "^1.1.0",
-    "eslint-plugin-react": "^3.4.2",
-    "eslint-plugin-standard": "^1.2.0",
-    "espree": "^1.12.3",
     "main-loop": "^3.1.0",
     "shelljs": "^0.5.3",
-    "standard-format": "^1.6.6",
+    "simple-get": "^2.0.0",
     "uglifyjs": "^2.4.10",
     "virtual-dom": "^2.1.1",
     "watchify": "^3.3.1",
     "xtend": "^4.0.0"
   },
-  "private": "true"
+  "private": true
 }

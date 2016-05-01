@@ -27,3 +27,5 @@ build/Release
 node_modules
 eslint
 eslint-plugin-standard
+
+.history
