@@ -1,5 +1,5 @@
 var get = require('simple-get')
-var url = 'https://standardizer-gmlqiyqodt.now.sh'
+var url = 'https://standardizer-dqxrhapxis.now.sh'
 
 var version = url + '/version'
 var lint = url + '/lint'
