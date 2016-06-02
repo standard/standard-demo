@@ -1,8 +1,12 @@
 var ace = require('brace')
 var h = require('virtual-dom/h')
 var main = require('main-loop')
+var get = require('simple-get')
 
+var querystring = require('querystring')
 var standardizer = require('./standardizer')
+
+var query = querystring.parse(window.location.search.slice(1))
 
 require('brace/mode/javascript')
 require('brace/theme/monokai')
@@ -75,3 +79,21 @@ function doStuff () {
 }
 
 doStuff()
+
+if (query.gist) {
+  get.concat('https://api.github.com/gists/' + query.gist, function (err, res, data) {
+    if (err) throw err
+
+    var obj = JSON.parse(data.toString())
+
+    // if no file passed, just use the first one
+    var file = query.file || Object.keys(obj.files)[0]
+
+    var content = obj.files[file].content
+
+    editor.setValue(content)
+
+    var gistMsg = 'Loaded ' + file + ' from gist <a href="' + obj.html_url + '">' + obj.html_url + '</a>'
+    document.getElementById('msg').innerHTML = gistMsg
+  })
+}
