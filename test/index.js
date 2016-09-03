@@ -6,7 +6,7 @@ test('standardizer version', function (t) {
   standardizer.version(function (err, versions) {
     t.error(err, 'no error')
 
-    t.equals(versions, 'standardizer@1.1.1, standard-format@2.1.1, standard@7.0.1, eslint@2.9.0, eslint-config-standard@5.3.1, eslint-config-standard-jsx@1.2.0, eslint-plugin-promise@1.1.0, eslint-plugin-react@5.0.1, eslint-plugin-standard@1.3.2, standard-engine@4.0.1', 'correct version returned')
+    t.equals(versions, 'standardizer@1.2.0, standard-format@2.2.3, standard@8.0.0, eslint@3.4.0, eslint-config-standard@6.0.0-beta.3, eslint-config-standard-jsx@3.0.0, eslint-plugin-promise@2.0.1, eslint-plugin-react@6.2.0, eslint-plugin-standard@2.0.0, standard-engine@5.1.0', 'correct version returned')
 
     t.end()
   })
