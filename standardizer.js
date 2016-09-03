@@ -4,6 +4,7 @@ var url = 'https://standardizer.flet.io/'
 var version = url + '/version'
 var lint = url + '/lint'
 var format = url + '/format'
+var fix = url + '/fix'
 
 var headers = {
   'Content-Type': 'application/json'
@@ -39,6 +40,22 @@ module.exports = {
     process(opts, function (err, resp) {
       if (err) return cb(err)
       return cb(null, resp.results[0].messages)
+    })
+  },
+
+  fix: function (text, cb) {
+    if (!text) return cb(null, [])
+
+    var opts = {
+      method: 'POST',
+      url: fix,
+      body: {text: text},
+      headers: headers
+    }
+    process(opts, function (err, resp) {
+      if (err) return cb(err)
+      var fixedText = resp.results[0].output || text
+      return cb(null, fixedText)
     })
   },
 

@@ -33,11 +33,22 @@ standardizer.version(function (err, versions) {
 })
 
 function render (state) {
-  return h('div', [renderFormatButton(), renderMessages(state)])
+  return h('div', [renderFixButton(), renderFormatButton(), renderMessages(state)])
 }
 
 function renderFormatButton () {
-  return h('button', {onclick: formatCode}, 'Format Code')
+  return h('button', {onclick: formatCode}, 'Format using standard-format')
+}
+
+function renderFixButton () {
+  return h('button', {onclick: fixCode}, 'Correct errors using --fix')
+}
+
+function fixCode () {
+  standardizer.fix(editor.getValue(), function (err, text) {
+    if (err) throw err
+    editor.setValue(text)
+  })
 }
 
 function formatCode () {
