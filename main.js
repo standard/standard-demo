@@ -33,11 +33,7 @@ standardizer.version(function (err, versions) {
 })
 
 function render (state) {
-  return h('div', [renderFixButton(), renderFormatButton(), renderMessages(state)])
-}
-
-function renderFormatButton () {
-  return h('button', {onclick: formatCode}, 'Format using standard-format')
+  return h('div', [renderFixButton(), renderMessages(state)])
 }
 
 function renderFixButton () {
@@ -46,13 +42,6 @@ function renderFixButton () {
 
 function fixCode () {
   standardizer.fix(editor.getValue(), function (err, text) {
-    if (err) throw err
-    editor.setValue(text)
-  })
-}
-
-function formatCode () {
-  standardizer.format(editor.getValue(), function (err, text) {
     if (err) throw err
     editor.setValue(text)
   })
