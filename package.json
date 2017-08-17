@@ -12,7 +12,6 @@
     "standard": "*",
     "tap-spec": "^4.0.2",
     "tape": "^4.5.1",
-    "uglifyjs": "^2.4.10",
     "watchify": "^3.7.0"
   },
   "homepage": "https://github.com/flet/standard-demo",
@@ -25,7 +24,7 @@
   },
   "scripts": {
     "build": "npm run browserify",
-    "browserify": "browserify main.js | uglifyjs -cm > bundle.js",
+    "browserify": "browserify main.js -o bundle.js",
     "start": "ecstatic -p 8000 .",
     "test": "standard && tape test/*.js | tap-spec",
     "watch": "watchify main.js -o bundle.js -dv"
