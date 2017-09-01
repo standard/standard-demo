@@ -1,5 +1,5 @@
 var get = require('simple-get')
-var url = 'https://standardizer.flet.io'
+var url = 'https://standardizer.glitch.me'
 
 var version = url + '/version'
 var lint = url + '/lint'
