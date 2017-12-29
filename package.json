@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "browserify": "^13.0.0",
-    "ecstatic": "^1.4.0",
+    "ecstatic": "^3.1.1",
     "standard": "*",
     "tap-spec": "^4.0.2",
     "tape": "^4.5.1",
