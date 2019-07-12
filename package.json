@@ -10,7 +10,7 @@
     "browserify": "^16.3.0",
     "ecstatic": "^4.1.2",
     "standard": "*",
-    "tap-spec": "^4.0.2",
+    "tap-spec": "^5.0.0",
     "tape": "^4.5.1",
     "watchify": "^3.7.0"
   },
