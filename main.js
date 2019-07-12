@@ -23,7 +23,7 @@ editor.setValue([
 ].join('\n'))
 editor.getSession().on('change', doStuff)
 
-var loop = main({messages: []}, render, require('virtual-dom'))
+var loop = main({ messages: [] }, render, require('virtual-dom'))
 document.querySelector('#messages').appendChild(loop.target)
 
 // display versions
@@ -37,7 +37,7 @@ function render (state) {
 }
 
 function renderFixButton () {
-  return h('button', {onclick: fixCode}, 'Correct errors using --fix')
+  return h('button', { onclick: fixCode }, 'Correct errors using --fix')
 }
 
 function fixCode () {
@@ -48,11 +48,11 @@ function fixCode () {
 }
 
 function renderMessages (state) {
-  if (state.messages.length < 1) return h('div', {className: 'success message'}, 'JavaScript Standard Style')
+  if (state.messages.length < 1) return h('div', { className: 'success message' }, 'JavaScript Standard Style')
 
   var renderedMessages = state.messages.map(function (m) {
     var formattedMessage = m.line + ':' + m.column + ' - ' + m.message + ' (' + m.ruleId + ')'
-    return h('div', {className: 'message'}, formattedMessage)
+    return h('div', { className: 'message' }, formattedMessage)
   })
   return renderedMessages
 }
@@ -66,15 +66,15 @@ function doStuff () {
       annotations.push(
         {
           row: message.line - 1, // must be 0 based
-          column: message.column - 1,  // must be 0 based
-          text: message.message,  // text to show in tooltip
+          column: message.column - 1, // must be 0 based
+          text: message.message, // text to show in tooltip
           type: 'error'
         }
       )
     })
 
     editor.session.setAnnotations(annotations)
-    loop.update({messages: messages})
+    loop.update({ messages: messages })
   })
 }
 

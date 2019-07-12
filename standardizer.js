@@ -34,7 +34,7 @@ module.exports = {
     var opts = {
       method: 'POST',
       url: lint,
-      body: {text: text},
+      body: { text: text },
       headers: headers
     }
     process(opts, function (err, resp) {
@@ -49,7 +49,7 @@ module.exports = {
     var opts = {
       method: 'POST',
       url: fix,
-      body: {text: text},
+      body: { text: text },
       headers: headers
     }
     process(opts, function (err, resp) {
@@ -65,7 +65,7 @@ module.exports = {
     var opts = {
       method: 'POST',
       url: format,
-      body: {text: text},
+      body: { text: text },
       headers: headers
     }
     process(opts, function (err, resp) {
