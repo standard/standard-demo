@@ -1,5 +1,7 @@
 # standard-demo
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/standard/standard-demo.svg)](https://greenkeeper.io/)
+
 Online "Try it" editor for JavaScript Standard Style.
 
 :warning: Warning: Work in Progress!
