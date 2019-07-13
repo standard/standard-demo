@@ -3,7 +3,6 @@ var url = 'https://standardizer.glitch.me'
 
 var version = url + '/version'
 var lint = url + '/lint'
-var format = url + '/format'
 var fix = url + '/fix'
 
 var headers = {
@@ -56,21 +55,6 @@ module.exports = {
       if (err) return cb(err)
       var fixedText = resp.results[0].output || text
       return cb(null, fixedText)
-    })
-  },
-
-  format: function (text, cb) {
-    if (!text) return cb(null, [])
-
-    var opts = {
-      method: 'POST',
-      url: format,
-      body: { text: text },
-      headers: headers
-    }
-    process(opts, function (err, resp) {
-      if (err) return cb(err)
-      return cb(null, resp.text)
     })
   }
 }
