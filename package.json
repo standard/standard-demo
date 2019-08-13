@@ -10,7 +10,6 @@
     "browserify": "^16.3.0",
     "ecstatic": "^4.1.2",
     "standard": "*",
-    "tap-spec": "^5.0.0",
     "tape": "^4.5.1",
     "watchify": "^3.7.0"
   },
@@ -23,11 +22,12 @@
     "url": "https://github.com/flet/standard-demo.git"
   },
   "scripts": {
-    "build": "npm run browserify",
-    "browserify": "browserify main.js -o bundle.js",
-    "start": "ecstatic -p 8000 .",
-    "test": "standard && tape test/*.js | tap-spec",
-    "watch": "watchify main.js -o bundle.js -dv"
+    "build": "browserify main.js -o bundle.js",
+    "start": "npm run build && ecstatic -p 4000 .",
+    "test": "standard && tape test/*.js",
+    "watch": "npm run watch-js & npm run watch-html",
+    "watch-js": "watchify main.js -dv -o bundle.js",
+    "watch-html": "ecstatic -p 4000 ."
   },
   "dependencies": {
     "brace": "^0.11.1",

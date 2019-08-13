@@ -93,7 +93,12 @@ if (query.gist) {
 
     editor.setValue(content)
 
-    var gistMsg = 'Loaded ' + file + ' from gist <a href="' + obj.html_url + '">' + obj.html_url + '</a>'
-    document.getElementById('msg').innerHTML = gistMsg
+    var gistMsg = 'Loaded ' + file + ' from gist '
+    document.getElementById('msg').textContent = gistMsg
+
+    var link = document.createElement('a')
+    link.href = obj.html_url
+    link.textContent = ' ' + obj.html_url
+    document.getElementById('msg').appendChild(link)
   })
 }
