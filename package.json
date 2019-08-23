@@ -36,4 +36,9 @@
     "watch-html": "ecstatic -p 4000 .",
     "watch-js": "watchify main.js -dv -o bundle.js"
   },
+  "standard": {
+    "ignore": [
+      "bundle.js"
+    ]
+  }
 }
