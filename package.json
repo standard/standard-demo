@@ -22,7 +22,7 @@
   "homepage": "https://github.com/flet/standard-demo",
   "keywords": [],
   "license": "ISC",
-  "main": "index.js",
+  "main": "main.js",
   "private": true,
   "repository": {
     "type": "git",
