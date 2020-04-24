@@ -16,7 +16,7 @@
     "browserify": "^16.3.0",
     "ecstatic": "^4.1.2",
     "standard": "*",
-    "tape": "^4.5.1",
+    "tape": "^5.0.0",
     "watchify": "^3.7.0"
   },
   "homepage": "https://github.com/flet/standard-demo",
