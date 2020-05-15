@@ -9,7 +9,7 @@
   "dependencies": {
     "brace": "^0.11.1",
     "main-loop": "^3.1.0",
-    "simple-get": "^3.0.3",
+    "simple-get": "^4.0.0",
     "virtual-dom": "^2.1.1"
   },
   "devDependencies": {
