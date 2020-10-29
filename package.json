@@ -8,16 +8,16 @@
   },
   "dependencies": {
     "brace": "^0.11.1",
-    "main-loop": "^3.1.0",
+    "main-loop": "^3.4.0",
     "simple-get": "^3.0.3",
     "virtual-dom": "^2.1.1"
   },
   "devDependencies": {
     "browserify": "^16.3.0",
-    "ecstatic": "^4.1.2",
+    "ecstatic": "^4.1.4",
     "standard": "*",
     "tape": "^5.0.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.11.1"
   },
   "homepage": "https://github.com/flet/standard-demo",
   "keywords": [],
