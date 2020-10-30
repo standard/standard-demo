@@ -1,24 +1,24 @@
-var get = require('simple-get')
-var url = 'https://standardizer.glitch.me'
+const get = require('simple-get')
+const url = 'https://standardizer.glitch.me'
 
-var version = url + '/version'
-var lint = url + '/lint'
-var fix = url + '/fix'
+const version = url + '/version'
+const lint = url + '/lint'
+const fix = url + '/fix'
 
-var headers = {
+const headers = {
   'Content-Type': 'application/json'
 }
 
 module.exports = {
   version: function (cb) {
-    var opts = {
+    const opts = {
       method: 'GET',
       url: version
     }
     process(opts, function (err, versions) {
       if (err) return cb(err)
 
-      var text = Object.keys(versions).reduce(function (p, c, i) {
+      const text = Object.keys(versions).reduce(function (p, c, i) {
         p += i > 0 ? ', ' : ''
         return p + c + '@' + versions[c]
       }, '')
@@ -30,7 +30,7 @@ module.exports = {
   lint: function (text, cb) {
     if (!text) return cb(null, [])
 
-    var opts = {
+    const opts = {
       method: 'POST',
       url: lint,
       body: { text: text },
@@ -45,7 +45,7 @@ module.exports = {
   fix: function (text, cb) {
     if (!text) return cb(null, [])
 
-    var opts = {
+    const opts = {
       method: 'POST',
       url: fix,
       body: { text: text },
@@ -53,7 +53,7 @@ module.exports = {
     }
     process(opts, function (err, resp) {
       if (err) return cb(err)
-      var fixedText = resp.results[0].output || text
+      const fixedText = resp.results[0].output || text
       return cb(null, fixedText)
     })
   }

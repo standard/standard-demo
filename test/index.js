@@ -1,6 +1,6 @@
-var test = require('tape')
+const test = require('tape')
 
-var standardizer = require('../standardizer')
+const standardizer = require('../standardizer')
 
 test('standardizer version', function (t) {
   standardizer.version(function (err, versions) {

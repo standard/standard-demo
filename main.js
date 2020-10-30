@@ -1,16 +1,16 @@
-var ace = require('brace')
-var h = require('virtual-dom/h')
-var main = require('main-loop')
-var get = require('simple-get')
+const ace = require('brace')
+const h = require('virtual-dom/h')
+const main = require('main-loop')
+const get = require('simple-get')
 
-var querystring = require('querystring')
-var standardizer = require('./standardizer')
+const querystring = require('querystring')
+const standardizer = require('./standardizer')
 
-var query = querystring.parse(window.location.search.slice(1))
+const query = querystring.parse(window.location.search.slice(1))
 
 require('brace/mode/javascript')
 require('brace/theme/monokai')
-var editor = ace.edit('javascript-editor')
+const editor = ace.edit('javascript-editor')
 editor.$blockScrolling = Infinity
 
 editor.getSession().setMode('ace/mode/javascript')
@@ -23,7 +23,7 @@ editor.setValue([
 ].join('\n'))
 editor.getSession().on('change', doStuff)
 
-var loop = main({ messages: [] }, render, require('virtual-dom'))
+const loop = main({ messages: [] }, render, require('virtual-dom'))
 document.querySelector('#messages').appendChild(loop.target)
 
 // display versions
@@ -50,8 +50,8 @@ function fixCode () {
 function renderMessages (state) {
   if (state.messages.length < 1) return h('div', { className: 'success message' }, 'JavaScript Standard Style')
 
-  var renderedMessages = state.messages.map(function (m) {
-    var formattedMessage = m.line + ':' + m.column + ' - ' + m.message + ' (' + m.ruleId + ')'
+  const renderedMessages = state.messages.map(function (m) {
+    const formattedMessage = m.line + ':' + m.column + ' - ' + m.message + ' (' + m.ruleId + ')'
     return h('div', { className: 'message' }, formattedMessage)
   })
   return renderedMessages
@@ -61,7 +61,7 @@ function doStuff () {
   standardizer.lint(editor.getValue(), function (err, messages) {
     if (err) throw err
 
-    var annotations = []
+    const annotations = []
     messages.forEach(function (message) {
       annotations.push(
         {
@@ -84,19 +84,19 @@ if (query.gist) {
   get.concat('https://api.github.com/gists/' + query.gist, function (err, res, data) {
     if (err) throw err
 
-    var obj = JSON.parse(data.toString())
+    const obj = JSON.parse(data.toString())
 
     // if no file passed, just use the first one
-    var file = query.file || Object.keys(obj.files)[0]
+    const file = query.file || Object.keys(obj.files)[0]
 
-    var content = obj.files[file].content
+    const content = obj.files[file].content
 
     editor.setValue(content)
 
-    var gistMsg = 'Loaded ' + file + ' from gist '
+    const gistMsg = 'Loaded ' + file + ' from gist '
     document.getElementById('msg').textContent = gistMsg
 
-    var link = document.createElement('a')
+    const link = document.createElement('a')
     link.href = obj.html_url
     link.textContent = ' ' + obj.html_url
     document.getElementById('msg').appendChild(link)
