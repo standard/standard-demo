@@ -1,12 +1,13 @@
 const get = require('simple-get')
 const url = 'https://standardizer.glitch.me'
+const userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36'
 
 const version = url + '/version'
 const lint = url + '/lint'
 const fix = url + '/fix'
 
 const headers = {
-  'Content-Type': 'application/json'
+  'user-agent': userAgent
 }
 
 module.exports = {
