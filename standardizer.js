@@ -14,7 +14,9 @@ module.exports = {
   version: function (cb) {
     const opts = {
       method: 'GET',
-      url: version
+      url: version,
+      json: true,
+      headers
     }
     process(opts, function (err, versions) {
       if (err) return cb(err)
@@ -34,8 +36,9 @@ module.exports = {
     const opts = {
       method: 'POST',
       url: lint,
+      json: true,
       body: { text: text },
-      headers: headers
+      headers
     }
     process(opts, function (err, resp) {
       if (err) return cb(err)
@@ -49,8 +52,9 @@ module.exports = {
     const opts = {
       method: 'POST',
       url: fix,
+      json: true,
       body: { text: text },
-      headers: headers
+      headers
     }
     process(opts, function (err, resp) {
       if (err) return cb(err)
@@ -61,10 +65,8 @@ module.exports = {
 }
 
 function process (opts, cb) {
-  if (opts.body) opts.body = JSON.stringify(opts.body)
-
   get.concat(opts, function (err, res, data) {
     if (err) return cb(err)
-    cb(null, JSON.parse(data.toString('utf8')))
+    cb(null, data)
   })
 }
