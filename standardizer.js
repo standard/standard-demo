@@ -37,12 +37,12 @@ module.exports = {
       method: 'POST',
       url: lint,
       json: true,
-      body: { text: text },
+      body: { text },
       headers
     }
     process(opts, function (err, resp) {
       if (err) return cb(err)
-      return cb(null, resp.results[0].messages)
+      return cb(null, resp[0].messages)
     })
   },
 
@@ -53,12 +53,12 @@ module.exports = {
       method: 'POST',
       url: fix,
       json: true,
-      body: { text: text },
+      body: { text },
       headers
     }
     process(opts, function (err, resp) {
       if (err) return cb(err)
-      const fixedText = resp.results[0].output || text
+      const fixedText = resp[0].output || text
       return cb(null, fixedText)
     })
   }
